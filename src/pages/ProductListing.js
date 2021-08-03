@@ -10,7 +10,9 @@ export const ProductListing = () => {
   const dispatch = useDispatch();
 
   useEffect(async () => {
-    dispatch(fetchAllProducts());
+    if (items.length === 0) {
+      dispatch(fetchAllProducts());
+    }
   }, []);
 
   if (loading) {
@@ -29,6 +31,8 @@ export const ProductListing = () => {
             image={item.image}
             title={item.title}
             price={item.price}
+            id={item.id}
+            item={item}
           />
         ))
       ) : (
